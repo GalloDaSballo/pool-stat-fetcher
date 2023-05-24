@@ -1,6 +1,6 @@
 {
-  "name": "typescript-package-starter",
-  "description": "A simple Typescript template to start your package",
+  "name": "pool-stat-fetcher",
+  "description": "Fetch the salient info for the pool so you can use amm-math",
   "author": {
     "name": "Alex The Entreprenerd",
     "url": "https://github.com/GalloDaSballo",
@@ -19,6 +19,8 @@
     "doc": "tsc && jsdoc -c ./.jsdoc.json"
   },
   "dependencies": {
+    "dotenv": "^16.0.3",
+    "ethers": "^6.4.0",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {
