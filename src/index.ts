@@ -1,9 +1,18 @@
-import { AlchemyProvider } from "ethers";
 import * as dotenv from "dotenv";
+import { providers } from "ethers";
 import { PoolData } from "./types";
 import balancerFetcher from "./fetchers/bal";
 import curveFetcher from "./fetchers/curve";
 import veloFetcher from "./fetchers/velo";
+
+const RPC_URLS: Record<number, string> = {
+  1: `https://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
+  5: `https://eth-goerli.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
+  137: `https://polygon-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
+  42161: `https://arb-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
+  10: `https://opt-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
+  11155111: `https://eth-sepolia.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
+};
 
 dotenv.config();
 // Interfaces
@@ -27,10 +36,7 @@ export default async function fetchValues(
   extraInfo?
 ): Promise<PoolData> {
   // Provider for given chain
-  const ALCHEMY_PROVIDER = new AlchemyProvider(
-    chainId,
-    process.env.ALCHEMY_API_KEY
-  );
+  const ALCHEMY_PROVIDER = new providers.JsonRpcProvider(RPC_URLS[chainId]);
 
   // Pass to fetcher
   if (type === "Balancer") {
