@@ -1,0 +1,5 @@
+[
+  "function stable() external view returns (bool)",
+  "function tokens() external view returns (address, address)",
+  "function getReserves() public view returns (uint256, uint256, uint256)"
+]
