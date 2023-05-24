@@ -31,9 +31,9 @@ interface ExtraInfo {
 
 export default async function fetchValues(
   chainId: number,
-  type,
-  address, // Address of Pool
-  extraInfo?
+  type: string,
+  address: string, // Address of Pool
+  extraInfo?: ExtraInfo
 ): Promise<PoolData> {
   // Provider for given chain
   const ALCHEMY_PROVIDER = new providers.JsonRpcProvider(RPC_URLS[chainId]);
