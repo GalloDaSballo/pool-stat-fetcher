@@ -17,14 +17,9 @@ export default async function fetchValues(
   const PAIR = new Contract(address, POOL_ABI, ethersProvider);
 
   const isStable = await PAIR.stable();
-  console.log("isStable", isStable);
-
   const tokens = await PAIR.tokens();
 
-  console.log("tokens", tokens);
-
   const reservesRes = await PAIR.getReserves();
-  console.log("reservesRes", reservesRes);
   const reserves = [reservesRes[0], reservesRes[1]];
 
   return {
