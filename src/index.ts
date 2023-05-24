@@ -2,6 +2,7 @@ import { AlchemyProvider } from "ethers";
 import * as dotenv from "dotenv";
 import { PoolData } from "./types";
 import balancerFetcher from "./fetchers/bal";
+import curveFetcher from "./fetchers/curve";
 
 dotenv.config();
 // Interfaces
@@ -22,7 +23,7 @@ export default async function fetchValues(
   chainId: number,
   type,
   address, // Address of Pool
-  extraInfo
+  extraInfo?
 ): Promise<PoolData> {
   // Provider for given chain
   const ALCHEMY_PROVIDER = new AlchemyProvider(
@@ -33,6 +34,10 @@ export default async function fetchValues(
   // Pass to fetcher
   if (type === "Balancer") {
     return balancerFetcher(ALCHEMY_PROVIDER, address, extraInfo?.poolId);
+  }
+
+  if (type === "Curve") {
+    return curveFetcher(ALCHEMY_PROVIDER, address);
   }
 
   // Return value
@@ -50,6 +55,14 @@ async function main() {
   );
 
   console.log("res", res);
+
+  const resC = await fetchValues(
+    10,
+    "Curve",
+    "0x1337BedC9D22ecbe766dF105c9623922A27963EC"
+  );
+
+  console.log("resC", resC);
 }
 
 main();

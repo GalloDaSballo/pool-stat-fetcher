@@ -1,0 +1,6 @@
+[
+  "function coins(uint256) external view returns (address)",
+  "function balances(uint256) external view returns (address)",
+  "function A_precise() external view returns (uint256)",
+  "function fee() external view returns (uint256)"
+]
