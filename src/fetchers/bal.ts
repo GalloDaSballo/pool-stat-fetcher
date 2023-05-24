@@ -7,6 +7,7 @@ import POOL_ABI from "../abi/bal_pool.json";
 const BALANCER_VAULT_ADDRESS = "0xba12222222228d8ba445958a75a0704d566bf2c8";
 
 /**
+BALANCE EXAMPLE
 https://optimistic.etherscan.io/address/0xBA12222222228d8Ba445958a75a0704d566BF2C8#code
 0x7b50775383d3d6f0215a8f290f2c9e2eebbeceb200020000000000000000008b
 https://optimistic.etherscan.io/address/0x9aa3cd420f830E049e2b223D0b07D8c809C94d15
